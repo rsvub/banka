@@ -30,8 +30,8 @@ public class Banka {
         PreparedStatement preparedStatementUpdate = null;
 
         String insertTableSQL = "INSERT INTO TRANSACTION "
-                + "(IDACCOUNT, ACCOUNTMOVE, DATE) VALUES"
-                + "(?,?,?)";
+                + "(IDACCOUNT, ACCOUNTMOVE) VALUES"
+                + "(?,?)";
 
         String updateTableSQL = "UPDATE ACCOUNT SET BALANCE = BALANCE + ? "
                 + "WHERE IDACCOUNT = ?";
@@ -44,7 +44,6 @@ public class Banka {
             preparedStatementInsert = dbConnection.prepareStatement(insertTableSQL);
             preparedStatementInsert.setInt(1, 1);
             preparedStatementInsert.setInt(2, 200);
-            preparedStatementInsert.setString(3, getDate());
             preparedStatementInsert.executeUpdate();
 
             preparedStatementUpdate = dbConnection.prepareStatement(updateTableSQL);
